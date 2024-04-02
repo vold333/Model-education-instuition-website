@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SJC</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+    <video autoplay loop muted plays-inline class="video-background">
+        <source src="images/stud2.mp4" type="video/mp4">
+    </video>
+
+
+    <header>
+        <h1>SJC (Autonomous)</h1>
+    </header>
+
+    <div class="button-container">
+        <div class="dropdown">
+            <button>Academics</button>
+            <div class="dropdown-content">
+                <div class="options-container">
+                    <div class="text-options">
+                        <a href="https://www.example.com/page1">Engineering</a>
+                        <a href="https://www.example.com/page2">Medicine</a>
+                        <a href="https://www.example.com/page3">Law</a>
+                    </div>
+                    <div class="image-options">
+                        <a href="https://www.example.com/finearts">
+                            <img src="images/finearts.jpg" alt="finearts">
+                            Fine Arts
+                        </a>
+                        <a href="https://www.example.com/Placements">
+                            <img src="images/opt2.jpg" alt="Placements">
+                            Placements
+                        </a>
+                        <a href="https://www.example.com/Library">
+                            <img src="images/opt3.jpg" alt="Library">
+                            Library
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button>Admission</button><div class="dropdown-content">
+                <div class="options-container">
+                    <div class="text-options">
+                        <a href="https://www.example.com/page3">UG</a>
+                        <a href="https://www.example.com/page4">PG</a>
+                        <a href="https://www.example.com/page5">phD</a>
+                    </div>
+                    <div class="image-options">
+                        <a href="https://www.example.com/International Student">
+                            <img src="images/international.jpg" alt="International Student">
+                            International Student 
+                        </a>
+                        <a href="https://www.example.com/Placements">
+                            <img src="images/opt2.jpg" alt="Placements">
+                            Placements
+                        </a>
+                        <a href="https://www.example.com/Library">
+                            <img src="images/opt3.jpg" alt="Library"> 
+                            Library
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button>Campus Life</button>
+            <div class="dropdown-content">
+                <a href="https://www.example.com/page7">Options</a>
+                <a href="https://www.example.com/page8">Options</a>
+                <a href="https://www.example.com/page9">Options</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button>About</button>
+            <div class="dropdown-content">
+                <a href="https://www.example.com/page10">Contact us</a>
+                <a href="https://www.example.com/page11">Faculty Details</a>
+                <a href="https://www.example.com/page12">History</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button>Login</button>
+            <div class="dropdown-content">
+                <a href="https://www.example.com/page13">Student</a>
+                <a href="https://www.example.com/page14">Staff</a>
+                <a href="https://www.example.com/page15">Admin</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container">
+        <div class="navigation">
+            <button id="prevBtn">&lt;</button>
+            <button id="nextBtn">&gt;</button>
+        </div>
+        <div class="slide-wrapper">
+            <div class="slide">
+                <h2>Slide 1</h2>
+                <p>This is the content of slide 1. You can put any content here.</p>
+            </div>
+            <div class="slide">
+                <h2>Slide 2</h2>
+                <p>This is the content of slide 2. You can put any content here.</p>
+            </div>
+            <div class="slide">
+                <h2>Slide 3</h2>
+                <p>This is the content of slide 3. You can put any content here.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideWrapper = document.querySelector('.slide-wrapper');
+        const slides = document.querySelectorAll('.slide');
+        let currentIndex = 0;
+        const intervalTime = 5000; 
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlide();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateSlide();
+        }
+
+        function updateSlide() {
+            const offset = -currentIndex * 100 + '%';
+            slideWrapper.style.transform = 'translateX(' + offset + ')';
+        }
+
+        let slideInterval = setInterval(nextSlide, intervalTime);
+
+        nextBtn.addEventListener('click', () => {
+            clearInterval(slideInterval); 
+            nextSlide();
+            slideInterval = setInterval(nextSlide, intervalTime); 
+        });
+
+        prevBtn.addEventListener('click', () => {
+            clearInterval(slideInterval); 
+            prevSlide();
+            slideInterval = setInterval(nextSlide, intervalTime); 
+        });
+    </script>
+</body>
+</html>
+
